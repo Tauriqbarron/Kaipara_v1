@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/applications"
+        android:id="@+id/security"
         android:title="Security"
         />
     <item
-        android:id="@+id/bookings"
+        android:id="@+id/propertyManagement"
         android:title="Property management"
         />
     <item

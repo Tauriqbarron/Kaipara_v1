@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/quotes"
+        android:id="@+id/serviceJobs"
         android:title="Service Jobs"
         />
     <item
-        android:id="@+id/availability"
+        android:id="@+id/securityBookings"
         android:title="Secuirty Bookings"
         />
 
