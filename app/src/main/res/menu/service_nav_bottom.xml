@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/quotes"
-        android:title="Quotes"
+        android:title="Service Jobs"
         />
     <item
         android:id="@+id/availability"
-        android:title="Availability"
+        android:title="Secuirty Bookings"
         />
 
 </menu>
