@@ -62,7 +62,7 @@ public class UserLoginActivity extends baseActivity {
                             if(response.getString("message").equals("Pass")){
                                 Intent intent = new Intent(UserLoginActivity.this,ClientHome.class);
                                 Log.e("Login Pass","Storing Email");
-                                intent.putExtra("email",email.getText());
+                                intent.putExtra("email",email.getText().toString());
                                 Log.e("Login Pass","moving to Client Home");
                                 UserLoginActivity.this.startActivity(intent);
                                 Toast.makeText(UserLoginActivity.this, "Login Successful",

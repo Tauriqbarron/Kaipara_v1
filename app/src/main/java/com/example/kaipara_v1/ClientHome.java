@@ -5,10 +5,22 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
-public class ClientHome extends AppCompatActivity {
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class ClientHome extends AppCompatActivity {
+    String email;
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,6 +29,45 @@ public class ClientHome extends AppCompatActivity {
         BottomNavigationView topNav = findViewById(R.id.top_nav);
         bottomNav.setOnNavigationItemSelectedListener(navListner);
         topNav.setOnNavigationItemSelectedListener(navListnerTop);
+        Bundle data = getIntent().getExtras();
+        if (data != null){
+            email = data.getString("email");
+            Log.e("Email Passed:",email);
+        }
+        jsonParse();
+    }
+    private void jsonParse(){
+        Log.e("API","Retrieving id");
+        StringBuilder s = new StringBuilder(100);
+        s.append("https://kaipara-v1.herokuapp.com/php_rest_kiapara/api/client/get_single_client.php");
+        s.append("?email=");
+        s.append(email);
+        String url = s.toString();
+        Log.e("API Request: ", url);
+
+        RequestQueue requestQueue = Volley.newRequestQueue(ClientHome.this);
+        JsonObjectRequest objectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            id = response.getString("id").toString();
+                            Log.e("API Response: ", id);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("API Error", error.toString());
+            }
+        }
+        );
+        requestQueue.add(objectRequest);
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListnerTop =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -46,7 +97,10 @@ public class ClientHome extends AppCompatActivity {
                     Fragment selectedFragment = null;
                     switch (menuItem.getItemId()){
                         case R.id.serviceJobs:
+                            Bundle bundle = new Bundle();
+                            bundle.putString("id",id);
                             selectedFragment = new ClientServiceJobsFragment();
+                            selectedFragment.setArguments(bundle);
                             break;
                         case R.id.securityBookings:
                             selectedFragment = new ClientSecurityBookingsFragment();
