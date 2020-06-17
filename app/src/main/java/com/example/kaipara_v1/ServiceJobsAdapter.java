@@ -13,17 +13,17 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
-    LayoutInflater inflater;
+public class ServiceJobsAdapter extends RecyclerView.Adapter<ServiceJobsAdapter.ViewHolder> {
     List<ServiceJob> serviceJobs;
-    public Adapter(Context ctx, List<ServiceJob> serviceJobs){
-        this.inflater = LayoutInflater.from(ctx);
+    Context mContext;
+    public ServiceJobsAdapter(Context ctx, List<ServiceJob> serviceJobs){
+        this.mContext = ctx;
         this.serviceJobs = serviceJobs;
     }
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = inflater.inflate(R.layout.service_jobs_item,viewGroup,false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.service_jobs_item,viewGroup,false);
         return new ViewHolder(view);
     }
 
@@ -31,36 +31,38 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         viewHolder.title.setText(serviceJobs.get(i).getTitle());
         viewHolder.description.setText(serviceJobs.get(i).getDescription());
+        viewHolder.status.setText(serviceJobs.get(i).getStatus());
         viewHolder.price.setText(serviceJobs.get(i).getPrice());
         viewHolder.date.setText(serviceJobs.get(i).getDate());
-        viewHolder.starttime.setText(serviceJobs.get(i).getStarttime());
-        viewHolder.finishtime.setText(serviceJobs.get(i).getFinishtime());
+        viewHolder.end_date.setText(serviceJobs.get(i).getEnd_date());
         viewHolder.street.setText(serviceJobs.get(i).getStreet());
         viewHolder.suburb.setText(serviceJobs.get(i).getSuburb());
+        viewHolder.city.setText(serviceJobs.get(i).getCity());
         viewHolder.postcode.setText(serviceJobs.get(i).getPostcode());
         Picasso.get().load(serviceJobs.get(i).getImagePath()).into(viewHolder.img);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return  serviceJobs.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView title,description,price,date,starttime,finishtime,street,suburb,postcode;
+        TextView title,description,price,date,end_date,street,suburb,city,postcode,status;
         ImageView img;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             title = itemView.findViewById(R.id.jobTitle);
             description = itemView.findViewById(R.id.description);
+            status = itemView.findViewById(R.id.status);
             price = itemView.findViewById(R.id.price);
             date = itemView.findViewById(R.id.date);
-            starttime = itemView.findViewById(R.id.starttime);
-            finishtime = itemView.findViewById(R.id.finishtime);
+            end_date = itemView.findViewById(R.id.end_date);
             street = itemView.findViewById(R.id.street);
             suburb = itemView.findViewById(R.id.suburb);
+            city = itemView.findViewById(R.id.city);
             postcode = itemView.findViewById(R.id.postcode);
+            img = itemView.findViewById(R.id.serviceJobImage);
         }
     }
 }
