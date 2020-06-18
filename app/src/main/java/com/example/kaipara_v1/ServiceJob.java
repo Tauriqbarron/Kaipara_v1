@@ -46,7 +46,12 @@ public class ServiceJob {
     }
 
     public void setEnd_date(String end_date) {
-        this.end_date = end_date;
+        if(end_date == "null"){
+            this.end_date = " ";
+        }else{
+            this.end_date = end_date;
+        }
+
     }
 
 

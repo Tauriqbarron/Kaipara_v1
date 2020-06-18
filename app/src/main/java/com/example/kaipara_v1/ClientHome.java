@@ -21,6 +21,7 @@ import org.json.JSONObject;
 public class ClientHome extends AppCompatActivity {
     String email;
     String id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,14 @@ public class ClientHome extends AppCompatActivity {
             Log.e("Email Passed:",email);
         }
         jsonParse();
+    }
+    private void startFirstFrag(){
+        Fragment startFrag;
+        Bundle bundle = new Bundle();
+        bundle.putString("id",id);
+        startFrag = new ClientServiceJobsFragment();
+        startFrag.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,startFrag).commit();
     }
     private void jsonParse(){
         Log.e("API","Retrieving id");
@@ -56,6 +65,7 @@ public class ClientHome extends AppCompatActivity {
                         try {
                             id = response.getString("id").toString();
                             Log.e("API Response: ", id);
+                            startFirstFrag();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
