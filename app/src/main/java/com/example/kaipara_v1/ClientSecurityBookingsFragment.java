@@ -91,8 +91,10 @@ public class ClientSecurityBookingsFragment extends Fragment {
                         booking.setEnd_date(bookingObject.getString("end_date").toString());
                         booking.setStart_time(bookingObject.getString("start_time").toString());
                         booking.setEnd_time(bookingObject.getString("finish_time").toString());
+                        booking.setMonth(bookingObject.getString("date").toString());
+                        booking.setDay_num(bookingObject.getString("date").toString());
                         securityBookings.add(booking);
-                        Log.e("Storing item: ", "Completed item =  " + securityBookings.get(i).getDescription());
+                        Log.e("Storing item: ", "Completed item =  " + securityBookings.get(i).getStatus());
                     } catch (JSONException | ParseException e) {
                         e.printStackTrace();
                     }

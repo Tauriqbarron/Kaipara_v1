@@ -11,5 +11,7 @@
     <color name="shadow_black">#000000</color>
     <color name="shadow_grey">#ACACAC</color>
     <color name="white">#FFFFFF</color>
+    <color name="dark_grey">#9A9A9A</color>
+    <color name="SB_BJ">#598DE37A</color>
 
 </resources>

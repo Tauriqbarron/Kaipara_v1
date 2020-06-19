@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Kaipara_v1</string>
+    <string-array name="security_type">
+        <item>Bouncer</item>
+        <item>Commissioned Officer</item>
+        <item>Non-Commissioned Officer</item>
+        <item>Remote CCTV Monitor</item>
+        <item>Uniformed Security</item>
+    </string-array>
 </resources>

@@ -1,7 +1,10 @@
 package com.example.kaipara_v1;
 
-import java.sql.Date;
 import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class ServiceJob {
 
@@ -15,13 +18,13 @@ public class ServiceJob {
     private String street;
     private String suburb;
     private String city;
-    private String postcode;
+    private String month;
 
     public ServiceJob(){}
 
     public ServiceJob(String title, String imagePath, String description, String status, String price,
                       String date , String end_date, String street, String suburb,
-                      String city, String postcode){
+                      String city, String month){
         this.title = title;
         this.status = status;
         this.imagePath = imagePath;
@@ -32,7 +35,59 @@ public class ServiceJob {
         this.street = street;
         this.suburb = suburb;
         this.city = city;
-        this.postcode = postcode;
+        this.month = month;
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) throws ParseException {
+        String finalMonth = null;
+        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(month);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        String check= new SimpleDateFormat("MMMM").format(calendar.get(Calendar.MONTH));
+
+        switch(check){
+            case "January":
+                finalMonth = "Jan";
+                break;
+            case "February":
+                finalMonth = "Feb";
+                break;
+            case "March":
+                finalMonth = "Mar";
+                break;
+            case "April":
+                finalMonth = "Apr";
+                break;
+            case "May":
+                finalMonth = "May";
+                break;
+            case "June":
+                finalMonth = "Jun";
+                break;
+            case "July":
+                finalMonth = "Jul";
+                break;
+            case "August":
+                finalMonth = "Aug";
+                break;
+            case "September":
+                finalMonth = "Sep";
+                break;
+            case "October":
+                finalMonth = "Oct";
+                break;
+            case "November":
+                finalMonth = "Nov";
+                break;
+            case "December":
+                finalMonth = "Dec";
+                break;
+        }
+        this.month = finalMonth;
     }
 
     public String getCity() {
@@ -46,17 +101,6 @@ public class ServiceJob {
     public String getEnd_date() {
         return end_date;
     }
-
-    public void setEnd_date(String end_date) {
-        if(end_date == "null"){
-            this.end_date = " ";
-        }else{
-            this.end_date = end_date;
-        }
-
-    }
-
-
 
     public String getStatus() {
         return status;
@@ -72,7 +116,7 @@ public class ServiceJob {
                 st = "Accepted";
                 break;
             case "3":
-                st = "started";
+                st = "Started";
                 break;
             case "4":
                 st = "Complete";
@@ -113,19 +157,20 @@ public class ServiceJob {
 
     public void setPrice(String price) {
         if(price == "null"){
-            this.price = "Quotable";
+            this.price = "QUOTABLE";
         }else{
             this.price ="$"+price;
         }
-
     }
-
     public String getDate() {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDate(String date) throws ParseException {
+        String finalDay = null;
+        Date d = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        finalDay = (String) android.text.format.DateFormat.format("dd",d);
+        this.date = finalDay;
     }
 
     public String getStreet() {
@@ -144,11 +189,4 @@ public class ServiceJob {
         this.suburb = suburb;
     }
 
-    public String getPostcode() {
-        return postcode;
-    }
-
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
-    }
 }

@@ -6,7 +6,7 @@
         />
     <item
         android:id="@+id/securityBookings"
-        android:title="Secuirty Bookings"
+        android:title="Security Bookings"
         />
 
 </menu>

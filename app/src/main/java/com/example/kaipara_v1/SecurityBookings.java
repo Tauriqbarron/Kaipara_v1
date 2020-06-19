@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
 public class SecurityBookings {
 
     private String description;
@@ -15,6 +14,8 @@ public class SecurityBookings {
     private String suburb;
     private String city;
     private String start_date;
+    private String day_num;
+    private String month;
     private String end_date;
     private String start_time;
     private String end_time;
@@ -24,7 +25,7 @@ public class SecurityBookings {
 
     public SecurityBookings(String description, String price, String status, String street,
                             String suburb, String city, String start_date, String end_date,
-                            String start_time, String end_time){
+                            String start_time, String end_time,String day_num,String month){
         this.description = description;
         this.price = price;
         this.status = status;
@@ -35,7 +36,71 @@ public class SecurityBookings {
         this.end_date = end_date;
         this.start_time = start_time;
         this.end_time = end_time;
+        this.day_num = day_num;
+        this.month = month;
         this.expanded = false;
+    }
+
+    public String getDay_num() {
+        return day_num;
+    }
+
+    public void setDay_num(String day_num) throws ParseException {
+       String finalDay = null;
+        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(day_num);
+        finalDay = (String) android.text.format.DateFormat.format("dd",date);
+        this.day_num = finalDay;
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) throws ParseException {
+        String finalMonth = null;
+        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(month);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        String check= new SimpleDateFormat("MMMM").format(calendar.get(Calendar.MONTH));
+        switch(check){
+            case "January":
+                finalMonth = "Jan";
+                break;
+            case "February":
+                finalMonth = "Feb";
+                break;
+            case "March":
+                finalMonth = "Mar";
+                break;
+            case "April":
+                finalMonth = "Apr";
+                break;
+            case "May":
+                finalMonth = "May";
+                break;
+            case "June":
+                finalMonth = "Jun";
+                break;
+            case "July":
+                finalMonth = "Jul";
+                break;
+            case "August":
+                finalMonth = "Aug";
+                break;
+            case "September":
+                finalMonth = "Sep";
+                break;
+            case "October":
+                finalMonth = "Oct";
+                break;
+            case "November":
+                finalMonth = "Nov";
+                break;
+            case "December":
+                finalMonth = "Dec";
+                break;
+        }
+        this.month = finalMonth;
     }
 
     public boolean isExpanded() {
@@ -68,12 +133,7 @@ public class SecurityBookings {
 
     public void setStatus(String status) {
         String stat;
-        if(status == "available"){
-            stat = "AVAILABLE";
-        }
-        else {
-            stat = "ASSIGNED";
-        }
+        stat = status.toUpperCase();
         this.status = stat;
     }
 
@@ -111,9 +171,6 @@ public class SecurityBookings {
         Date date = format.parse(start_date);
         DateFormat format1 = new SimpleDateFormat("EEEE");
         day = format1.format(date);
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-
         switch (day){
             case "Sunday":
                 day = "Sun";
@@ -153,6 +210,7 @@ public class SecurityBookings {
     }
 
     public void setStart_time(String start_time) {
+
         this.start_time = start_time;
     }
 
@@ -161,6 +219,7 @@ public class SecurityBookings {
     }
 
     public void setEnd_time(String end_time) {
+        String time = null;
         this.end_time = end_time;
     }
 

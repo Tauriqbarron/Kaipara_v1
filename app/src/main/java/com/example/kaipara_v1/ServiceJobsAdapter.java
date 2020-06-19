@@ -3,6 +3,7 @@ package com.example.kaipara_v1;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,14 +33,32 @@ public class ServiceJobsAdapter extends RecyclerView.Adapter<ServiceJobsAdapter.
         viewHolder.title.setText(serviceJobs.get(i).getTitle());
         viewHolder.description.setText(serviceJobs.get(i).getDescription());
         viewHolder.status.setText(serviceJobs.get(i).getStatus());
+        switch (serviceJobs.get(i).getStatus()){
+            case "Unaccepted":
+                viewHolder.status.setBackgroundResource(R.drawable.rounded_unaccepted);
+                break;
+            case "Accepted":
+                viewHolder.status.setBackgroundResource(R.drawable.rounded_assigned);
+                break;
+            case "Started":
+                viewHolder.status.setBackgroundResource(R.drawable.rounded_started);
+                break;
+            case "Complete":
+                viewHolder.status.setBackgroundResource(R.drawable.rounded_complete);
+                break;
+        }
         viewHolder.price.setText(serviceJobs.get(i).getPrice());
         viewHolder.date.setText(serviceJobs.get(i).getDate());
-        viewHolder.end_date.setText(serviceJobs.get(i).getEnd_date());
+        viewHolder.month.setText(serviceJobs.get(i).getMonth());
         viewHolder.street.setText(serviceJobs.get(i).getStreet());
         viewHolder.suburb.setText(serviceJobs.get(i).getSuburb());
         viewHolder.city.setText(serviceJobs.get(i).getCity());
-        viewHolder.postcode.setText(serviceJobs.get(i).getPostcode());
-        Picasso.get().load(serviceJobs.get(i).getImagePath()).into(viewHolder.img);
+        if(serviceJobs.get(i).getImagePath() == "null"){
+            Log.e("No img path: ","Setting visibility to Gone");
+            viewHolder.img.setVisibility(View.GONE);
+        }else{
+            Picasso.get().load(serviceJobs.get(i).getImagePath()).into(viewHolder.img);
+        }
     }
 
     @Override
@@ -48,21 +67,20 @@ public class ServiceJobsAdapter extends RecyclerView.Adapter<ServiceJobsAdapter.
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView title,description,price,date,end_date,street,suburb,city,postcode,status;
+        TextView title,description,price,date,month,street,suburb,city,status;
         ImageView img;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.jobTitle);
-            description = itemView.findViewById(R.id.description);
-            status = itemView.findViewById(R.id.status);
-            price = itemView.findViewById(R.id.price);
-            date = itemView.findViewById(R.id.date);
-            end_date = itemView.findViewById(R.id.end_date);
-            street = itemView.findViewById(R.id.street);
-            suburb = itemView.findViewById(R.id.suburb);
-            city = itemView.findViewById(R.id.city);
-            postcode = itemView.findViewById(R.id.postcode);
-            img = itemView.findViewById(R.id.serviceJobImage);
+            title = itemView.findViewById(R.id.SJ_title);
+            description = itemView.findViewById(R.id.SJ_description);
+            status = itemView.findViewById(R.id.SJ_status);
+            price = itemView.findViewById(R.id.SJ_price);
+            date = itemView.findViewById(R.id.SJ_date);
+            street = itemView.findViewById(R.id.SJ_street);
+            suburb = itemView.findViewById(R.id.SJ_suburb);
+            city = itemView.findViewById(R.id.SJ_city);
+            img = itemView.findViewById(R.id.SJ_image);
+            month = itemView.findViewById(R.id.SJ_month);
         }
     }
 }

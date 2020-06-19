@@ -4,146 +4,171 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="10dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="20dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
     android:background="@color/cardview_light_background"
-    android:outlineAmbientShadowColor="@color/cardview_dark_background"
-    android:translationZ="1dp">
+    android:outlineAmbientShadowColor="@color/cardview_dark_background">
 
 
+    <androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+</androidx.cardview.widget.CardView>
     <ImageView
-        android:id="@+id/serviceJobImage"
-        android:layout_width="400dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="16dp"
+        android:id="@+id/SJ_image"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+
+
+
+    <TextView
+        android:id="@+id/SJ_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="city"
+        app:layout_constraintStart_toEndOf="@id/SJ_suburb"
+        app:layout_constraintTop_toTopOf="@id/SJ_street"
+        android:textColor="@color/cardview_dark_background"/>
+
+
+
+    <TextView
+        android:id="@+id/SJ_street"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:text="Street"
+        app:layout_constraintStart_toEndOf="@id/SJ_home_icon"
+        app:layout_constraintTop_toBottomOf="@id/SJ_description"
+        android:textColor="@color/cardview_dark_background"/>
+
+    <TextView
+        android:id="@+id/SJ_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="2dp"
+        android:shadowColor="@color/shadow_grey"
+        android:shadowRadius="1"
+        android:shadowDy="3"
+        android:shadowDx="3"
+        android:text="16"
+        android:textSize="28dp"
+        android:textColor="@color/cardview_dark_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SJ_month" />
+    <ImageView
+        android:id="@+id/SJ_divider"
+        android:layout_width="1dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="6dp"
+        android:background="@color/shadow_grey"
+        app:layout_constraintTop_toBottomOf="@id/SJ_image"
+        app:layout_constraintStart_toEndOf="@id/SJ_date"/>
+    <TextView
+        android:id="@+id/SJ_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Feb"
+        android:textColor="@color/shadow_grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SJ_image"/>
+
+    <TextView
+        android:id="@+id/SJ_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="10dp"
+        android:padding="2dp"
+        android:text="Status"
+        app:layout_constraintTop_toBottomOf="@id/SJ_city"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_unaccepted"/>
 
     <TextView
-        android:id="@+id/postcode"
+        android:id="@+id/SJ_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="200dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/cardview_dark_background"/>
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Price"
+        android:shadowColor="@color/shadow_grey"
+        android:shadowRadius="1"
+        android:shadowDy="3"
+        android:shadowDx="3"
 
-    <TextView
-        android:id="@+id/city"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="172dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/cardview_dark_background"/>
-
-    <TextView
-        android:id="@+id/end_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="152dp"
-        android:layout_marginEnd="60dp"
-        android:text="TextView"
-        android:textColor="@color/cardview_dark_background"
+        android:textColor="@color/SB_price"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/SJ_image" />
 
     <TextView
-        android:id="@+id/street"
+        android:id="@+id/SJ_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="172dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/shadow_black"
+        android:text="Title"
+        android:textSize="18dp"
+        android:shadowColor="@color/shadow_grey"
+        android:shadowRadius="1"
+        android:shadowDy="3"
+        android:shadowDx="3"
+        app:layout_constraintStart_toEndOf="@id/SJ_divider"
+        app:layout_constraintTop_toBottomOf="@+id/SJ_image"/>
+
+    <TextView
+        android:id="@+id/SJ_suburb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:text="suburb"
+        app:layout_constraintStart_toEndOf="@id/SJ_street"
+        app:layout_constraintTop_toTopOf="@id/SJ_street"
         android:textColor="@color/cardview_dark_background"/>
 
     <TextView
-        android:id="@+id/date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="208dp"
-        android:layout_marginTop="152dp"
-        android:text="TextView"
-        android:textColor="@color/cardview_dark_background"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="216dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        android:textColor="@color/cardview_dark_background"/>
-
-    <TextView
-        android:id="@+id/price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="292dp"
-        android:layout_marginTop="100dp"
-        android:text="TextView"
-        android:textColor="@color/cardview_dark_background"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/jobTitle"
+        android:id="@+id/SJ_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="100dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/cardview_dark_background"/>
-
-    <TextView
-        android:id="@+id/suburb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="befwbefobeofbewofbwoefboweubfo"
+        android:textSize="10dp"
+        app:layout_constraintStart_toEndOf="@id/SJ_divider"
+        app:layout_constraintTop_toBottomOf="@+id/SJ_title"
+        android:textColor="@color/dark_grey"/>
+    <ImageView
+        android:id="@+id/SJ_home_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="200dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/cardview_dark_background"/>
+        app:layout_constraintStart_toEndOf="@id/SJ_divider"
+        app:layout_constraintTop_toBottomOf="@id/SJ_description"
+        android:background="@drawable/pngtreevector_house_icon_4013530"/>
 
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="128dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/cardview_dark_background"/>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:text="Price:"
-        android:textColor="@color/cardview_dark_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/price"
-        app:layout_constraintHorizontal_bias="0.699"
-        app:layout_constraintStart_toEndOf="@+id/jobTitle" />
+
 
 </android.support.constraint.ConstraintLayout>

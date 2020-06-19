@@ -23,6 +23,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,16 +80,15 @@ public class ClientServiceJobsFragment extends Fragment {
                         application.setImagePath(applicationObject.getString("imagePath").toString());
                         application.setPrice(applicationObject.getString("price").toString());
                         application.setDate(applicationObject.getString("date").toString());
-                        application.setEnd_date(applicationObject.getString("end_date").toString());
                         application.setStreet(applicationObject.getString("street").toString());
                         application.setSuburb(applicationObject.getString("suburb").toString());
                         application.setCity(applicationObject.getString("city").toString());
-                        application.setPostcode(applicationObject.getString("postcode").toString());
+                        application.setMonth(applicationObject.getString("date").toString());
                         serviceJobs.add(application);
                         Log.e("Storing item: ","Completed item =  "+ serviceJobs.get(i).getTitle());
-                        Log.e("Storing item: ","Street:  "+ serviceJobs.get(i).getStreet());
+                        Log.e("Storing item: ","month:  "+ serviceJobs.get(i).getMonth());
 
-                    } catch (JSONException e) {
+                    } catch (JSONException | ParseException e) {
                         e.printStackTrace();
                     }
                 }
