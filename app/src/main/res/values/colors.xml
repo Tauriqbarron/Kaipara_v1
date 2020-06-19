@@ -4,4 +4,12 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="SJBG">#C1C1C1</color>
+    <color name="SB_day">#C1C1C1</color>
+    <color name="SB_date">#0041AC</color>
+    <color name="SB_month">#42BDF6</color>
+    <color name="SB_price">#56CD00</color>
+    <color name="shadow_black">#000000</color>
+    <color name="shadow_grey">#ACACAC</color>
+    <color name="white">#FFFFFF</color>
+
 </resources>

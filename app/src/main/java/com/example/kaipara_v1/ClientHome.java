@@ -105,15 +105,16 @@ public class ClientHome extends AppCompatActivity {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                     Fragment selectedFragment = null;
+                    Bundle bundle = new Bundle();
+                    bundle.putString("id",id);
                     switch (menuItem.getItemId()){
                         case R.id.serviceJobs:
-                            Bundle bundle = new Bundle();
-                            bundle.putString("id",id);
                             selectedFragment = new ClientServiceJobsFragment();
                             selectedFragment.setArguments(bundle);
                             break;
                         case R.id.securityBookings:
                             selectedFragment = new ClientSecurityBookingsFragment();
+                            selectedFragment.setArguments(bundle);
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

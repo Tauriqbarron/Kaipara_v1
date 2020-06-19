@@ -19,7 +19,9 @@ public class ServiceJob {
 
     public ServiceJob(){}
 
-    public ServiceJob(String title, String imagePath, String description, String status, String price, String date , String end_date, String street, String suburb, String city, String postcode){
+    public ServiceJob(String title, String imagePath, String description, String status, String price,
+                      String date , String end_date, String street, String suburb,
+                      String city, String postcode){
         this.title = title;
         this.status = status;
         this.imagePath = imagePath;
@@ -113,7 +115,7 @@ public class ServiceJob {
         if(price == "null"){
             this.price = "Quotable";
         }else{
-            this.price = price;
+            this.price ="$"+price;
         }
 
     }
