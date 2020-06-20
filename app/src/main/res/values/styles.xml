@@ -3,11 +3,16 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/shadow_black</item>
-        <item name="colorPrimaryDark">@color/shadow_grey</item>
+        <item name="colorPrimary">@color/SB_month</item>
+        <item name="colorPrimaryDark">@color/SB_month</item>
         <item name="android:windowBackground">@color/white</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorHint">@color/dark_grey</item>
+    </style>
+    <style name="datepicker" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/SB_month</item>
+        <item name="colorPrimary">@color/shadow_black</item>
+        <item name="android:textSize">6pt</item>
     </style>
 
 </resources>
