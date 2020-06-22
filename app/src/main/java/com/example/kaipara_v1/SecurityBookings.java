@@ -209,19 +209,22 @@ public class SecurityBookings {
         return start_time;
     }
 
-    public void setStart_time(String start_time) {
+    public void setStart_time(String start_time) throws ParseException {
+       String form = start_time.replace('.',':');
 
-        this.start_time = start_time;
+        DateFormat format = new SimpleDateFormat("HH:mm");
+        Date start = format.parse(form);
+        this.start_time = new SimpleDateFormat("hh:mm a").format(start);
     }
 
     public String getEnd_time() {
         return end_time;
     }
 
-    public void setEnd_time(String end_time) {
-        String time = null;
-        this.end_time = end_time;
+    public void setEnd_time(String end_time) throws ParseException {
+        String form = end_time.replace('.',':');
+        DateFormat format = new SimpleDateFormat("HH:mm");
+        Date end = format.parse(form);
+        this.end_time = new SimpleDateFormat("hh:mm a").format(end);
     }
-
-
 }

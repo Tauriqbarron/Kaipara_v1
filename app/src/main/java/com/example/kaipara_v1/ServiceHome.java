@@ -1,10 +1,10 @@
 package com.example.kaipara_v1;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -18,18 +18,18 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ClientHome extends AppCompatActivity {
+public class ServiceHome extends AppCompatActivity {
     String email;
     String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.client_home);
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        BottomNavigationView topNav = findViewById(R.id.top_nav);
-        bottomNav.setOnNavigationItemSelectedListener(navListner);
-        topNav.setOnNavigationItemSelectedListener(navListnerTop);
+        setContentView(R.layout.service_home);
+        BottomNavigationView bottomNav = findViewById(R.id.SP_bottom_navigation);
+        BottomNavigationView topNav = findViewById(R.id.SP_top_nav);
+        //bottomNav.setOnNavigationItemSelectedListener(navListner);
+       // topNav.setOnNavigationItemSelectedListener(navListnerTop);
         Bundle data = getIntent().getExtras();
         if (data != null){
             email = data.getString("email");
@@ -41,20 +41,20 @@ public class ClientHome extends AppCompatActivity {
         Fragment startFrag;
         Bundle bundle = new Bundle();
         bundle.putString("id",id);
-        startFrag = new ClientServiceJobsFragment();
+        startFrag = new ServiceApplicationsFragment();
         startFrag.setArguments(bundle);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,startFrag).commit();
+        Log.e("Fragment Update ", " Moving to start fragment");
+        getSupportFragmentManager().beginTransaction().replace(R.id.SP_fragment_container,startFrag).commit();
     }
     private void jsonParse(){
         Log.e("API","Retrieving id");
         StringBuilder s = new StringBuilder(100);
-        s.append("https://kaipara-v1.herokuapp.com/php_rest_kiapara/api/client/get_single_client.php");
+        s.append("https://kaipara-v1.herokuapp.com/php_rest_kiapara/api/serviceprovider/getid.php");
         s.append("?email=");
         s.append(email);
         String url = s.toString();
         Log.e("API Request: ", url);
-
-        RequestQueue requestQueue = Volley.newRequestQueue(ClientHome.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(ServiceHome.this);
         JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 url,

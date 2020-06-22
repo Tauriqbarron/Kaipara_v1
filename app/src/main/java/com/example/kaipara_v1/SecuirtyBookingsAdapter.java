@@ -52,9 +52,9 @@ public class SecuirtyBookingsAdapter extends RecyclerView.Adapter<SecuirtyBookin
     public int getItemCount() {
         return securityBookings.size();
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView description,price,status,street,suburb,city,day,date,start_time,end_time,month;
-       // ConstraintLayout sbExpand;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             description = itemView.findViewById(R.id.SB_description);

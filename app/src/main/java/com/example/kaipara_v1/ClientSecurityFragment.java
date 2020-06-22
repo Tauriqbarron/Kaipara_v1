@@ -2,6 +2,7 @@ package com.example.kaipara_v1;
 
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -23,8 +24,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 
 public class ClientSecurityFragment extends Fragment implements AdapterView.OnItemSelectedListener {
@@ -110,31 +113,41 @@ public class ClientSecurityFragment extends Fragment implements AdapterView.OnIt
                 int month = startdate1.getMonth();
                 int year = startdate1.getYear();
                 int day =startdate1.getDayOfMonth();
+
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(year,month,day);
+
                 dateI = calendar.getTime().toString();
                 int hour = time1.getHour();
                 int minute =time1.getMinute();
                 start_timeI = (hour)+"."+(minute);
                 //int duration = Integer.parseInt(durationTxt.getText().toString());
+
                 Calendar cal = Calendar.getInstance();
                 cal.set(year,month,day,hour,minute);
                 cal.add(Calendar.HOUR,hour);
-                end_timeI = cal.get(Calendar.HOUR)+"."+cal.get(Calendar.MINUTE);
+
+                end_timeI = cal.get(Calendar.HOUR)+":"+cal.get(Calendar.MINUTE);
                 end_dateI = cal.getTime().toString();
+
                 inputList = new ArrayList<>();
-                inputList.add(new KeyValuePair("type",typeI));
-                inputList.add(new KeyValuePair("description",descriptionI));
-                inputList.add(new KeyValuePair("street",streetI));
-                inputList.add(new KeyValuePair("suburb",suburbI));
-                inputList.add(new KeyValuePair("city",cityI));
-                inputList.add(new KeyValuePair("postcode",postcodeI));
-                inputList.add(new KeyValuePair("start_date",dateI));
-                inputList.add(new KeyValuePair("end_date",end_dateI));
-                inputList.add(new KeyValuePair("start_time",start_timeI));
-                inputList.add(new KeyValuePair("end_time",end_timeI));
-                inputList.add(new KeyValuePair("number",number));
+                HashMap<String,String> inputs = new HashMap<String, String>();
+                inputs.put("type",typeI);
+                inputs.put("start date",dateI);
+                inputs.put("end_date",end_dateI);
+                inputs.put("description",descriptionI);
+                inputs.put("street",streetI);
+                inputs.put("suburb",suburbI);
+                inputs.put("city",cityI);
+                inputs.put("postcode",postcodeI);
+                inputs.put("start_time",start_timeI);
+                inputs.put("end_time",end_timeI);
+                inputs.put("number",number);
+                inputs.put("start_date",dateI);
                 Fragment confirmFrag = new ClientSecurityBookingOverviewFragment();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("inputs",inputs);
+                confirmFrag.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container,confirmFrag).commit();
             }
@@ -150,12 +163,5 @@ public class ClientSecurityFragment extends Fragment implements AdapterView.OnIt
 
     }
 
-    public static class KeyValuePair {
-        private String key;
-        private String value;
-        public KeyValuePair(String key, String value) {
-            this.key = key;
-            this.value = value;
-        }
-    }
+
 }

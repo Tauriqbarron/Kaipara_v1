@@ -38,7 +38,7 @@
 
             <TextView
                 android:id="@+id/SB_description"
-                android:layout_width="wrap_content"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:text="Description"
                 android:textColor="@color/cardview_dark_background"
@@ -47,10 +47,12 @@
                 android:shadowRadius="1"
                 android:shadowDy="3"
                 android:shadowDx="3"
-                android:layout_marginTop="12dp"
-                android:layout_marginStart="16dp"
+                android:lines="2"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="5dp"
                 app:layout_constraintStart_toEndOf="@id/SB_time_bg"
-                app:layout_constraintTop_toTopOf="@id/SB_bookingCardSnapshot" />
+                app:layout_constraintTop_toTopOf="@id/SB_bookingCardSnapshot"
+                android:singleLine="false" />
             <TextView
                 android:id="@+id/SB_day"
                 android:layout_width="wrap_content"
@@ -87,8 +89,8 @@
                 android:id="@+id/SB_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="40dp"
-                android:layout_marginTop="18dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
                 app:layout_constraintTop_toTopOf="@id/SB_bookingCardSnapshot"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:textColor="@color/SB_price"
@@ -147,11 +149,11 @@
                 android:id="@+id/SB_suburb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
+                android:layout_marginTop="10dp"
                 android:text="suburb"
                 android:textColor="@color/cardview_dark_background"
-                app:layout_constraintTop_toTopOf="@id/SB_street"
-                app:layout_constraintStart_toEndOf="@+id/SB_street" />
+                app:layout_constraintTop_toBottomOf="@id/SB_street"
+                app:layout_constraintStart_toStartOf="@+id/SB_street" />
             <TextView
                 android:id="@+id/SB_city"
                 android:layout_width="wrap_content"

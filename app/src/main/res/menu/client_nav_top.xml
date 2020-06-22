@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/security"
-        android:title="Quotes"
+        android:title="Security"
         />
     <item
         android:id="@+id/propertyManagement"
-        android:title="Completed Jobs"
+        android:title="Property management"
         />
     <item
         android:id="@+id/profile"

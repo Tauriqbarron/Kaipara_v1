@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ClientHome"></activity>
-    </application>
+        <activity android:name=".ServiceHome"></activity>
 
+    </application>
 </manifest>

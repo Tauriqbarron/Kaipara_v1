@@ -12,31 +12,31 @@
     <android.support.design.widget.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottom_navigation"
+        android:id="@+id/SP_bottom_navigation"
         android:layout_alignParentBottom="true"
         android:textAlignment="center"
         app:itemIconTint="@color/shadow_black"
         app:itemTextColor="@color/shadow_black"
-        app:menu="@menu/client_nav_bottom"
+        app:menu="@menu/service_nav_bottom"
         android:background="@color/cardview_light_background"
         >
     </android.support.design.widget.BottomNavigationView>
     <FrameLayout
-        android:id="@+id/fragment_container"
+        android:id="@+id/SP_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottom_navigation"/>
+        android:layout_above="@id/SP_bottom_navigation"/>
 
 
 
     <android.support.design.widget.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/top_nav"
+        android:id="@+id/SP_top_nav"
         android:layout_alignParentTop="true"
         app:itemIconTint="@color/shadow_black"
         app:itemTextColor="@color/shadow_black"
-        app:menu="@menu/client_nav_top"
+        app:menu="@menu/service_nav_top"
         android:background="@color/cardview_light_background"
         >
 

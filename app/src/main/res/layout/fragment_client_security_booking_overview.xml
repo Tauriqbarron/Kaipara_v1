@@ -42,7 +42,10 @@
             android:shadowDx="2" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/SBFO_type"
+            android:lines="2"
+            android:singleLine="false"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/SBFO_lbl_type"
             android:textColor="@color/shadow_black"
@@ -64,8 +67,34 @@
             android:shadowRadius="2"
             android:shadowDy="2"
             android:shadowDx="2" />
+        <TextView
+            android:id="@+id/SBFO_lbl_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/SBFO_lbl_number"
+            android:textColor="@color/SB_month"
+            android:shadowColor="@color/shadow_grey"
+            android:shadowRadius="2"
+            android:shadowDy="2"
+            android:shadowDx="2" />
+        <TextView
+            android:id="@+id/SBFO_description"
+            android:lines="2"
+            android:singleLine="false"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/SBFO_lbl_description"
+            android:textColor="@color/shadow_black"
+            app:layout_constraintTop_toTopOf="@id/SBFO_lbl_description"
+            android:layout_marginStart="60dp"
+            android:text="Desscription"/>
 
         <TextView
+            android:id="@+id/SBFO_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/SBFO_lbl_number"
@@ -82,7 +111,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginStart="50dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/SBFO_lbl_number"
+            app:layout_constraintTop_toBottomOf="@id/SBFO_lbl_description"
             android:textColor="@color/SB_month"
             android:shadowColor="@color/shadow_grey"
             android:shadowRadius="2"
@@ -142,6 +171,7 @@
             android:shadowDy="2"
             android:shadowDx="2" />
         <TextView
+            android:id="@+id/SBFO_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/SBFO_lbl_date"
@@ -164,6 +194,7 @@
             android:shadowDy="2"
             android:shadowDx="2" />
         <TextView
+            android:id="@+id/SBFO_start_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/SBFO_lbl_start_time"
@@ -186,6 +217,7 @@
             android:shadowDy="2"
             android:shadowDx="2" />
         <TextView
+            android:id="@+id/SBFO_end_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/SBFO_lbl_end_time"
@@ -301,7 +333,7 @@
             android:layout_height="wrap_content"
             android:text="Confirm Booking"
             android:textSize="16dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/rounded_started"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

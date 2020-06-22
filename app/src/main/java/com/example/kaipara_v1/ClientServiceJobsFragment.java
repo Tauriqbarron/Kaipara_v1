@@ -84,6 +84,8 @@ public class ClientServiceJobsFragment extends Fragment {
                         application.setSuburb(applicationObject.getString("suburb").toString());
                         application.setCity(applicationObject.getString("city").toString());
                         application.setMonth(applicationObject.getString("date").toString());
+
+
                         serviceJobs.add(application);
                         Log.e("Storing item: ","Completed item =  "+ serviceJobs.get(i).getTitle());
                         Log.e("Storing item: ","month:  "+ serviceJobs.get(i).getMonth());
